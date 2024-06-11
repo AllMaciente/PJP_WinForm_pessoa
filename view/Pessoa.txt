@@ -1,0 +1,55 @@
+namespace Programa
+{
+    public class ViewPessoa
+    {
+        public static void CriarPessoa()
+        {
+            Console.WriteLine(" ----- Criar ----- ");
+
+            Console.WriteLine("Digite o nome da pessoa: ");
+            string nome = Console.ReadLine() ?? "";
+
+            Console.WriteLine("Digite a idade da pessoa: ");
+            int idade = Convert.ToInt32(Console.ReadLine());
+
+            ControllerPessoa.CriarPessoa(nome, idade);
+        }
+        public static void ListarPessoa()
+        {
+            Console.WriteLine(" -----  Listar ----- ");
+            List<Pessoa> pessoas = ControllerPessoa.ListarPessoa();
+            if (pessoas.Count == 0)
+            {
+                Console.WriteLine("Nenhum pessoa cadastrada no sistema");
+            }
+            else
+            {
+                foreach (Pessoa pessoa in pessoas)
+                {
+                    Console.WriteLine($"{pessoa.Nome} - {pessoa.Idade}");
+                }
+            }
+        }
+
+        public static void DeletarPessoa()
+        {
+            Console.WriteLine(" ----- Deletar ----- ");
+            Console.WriteLine("Informe o indice da pessoa para deleta:");
+            int indice = Convert.ToInt32(Console.ReadLine());
+
+            ControllerPessoa.DeletarPessoa(indice);
+        }
+        public static void EditarPessoa()
+        {
+            Console.WriteLine(" ----- Alterar ----- ");
+            Console.WriteLine("Informe o indice da pessoa para alterar:");
+            int indice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Digite o nome da pessoa para alterar:");
+            string nome = Console.ReadLine() ?? "";
+
+            Console.WriteLine("Digite a idade da pessoa para alterar:");
+            int idade = Convert.ToInt32(Console.ReadLine());
+            ControllerPessoa.EditarPessoa(indice, nome, idade);
+        }
+    }
+}
