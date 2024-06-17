@@ -1,11 +1,12 @@
 using View;
 
-namespace Programa;
+namespace pessoa_form;
 
 static class Program
 {
     static void Main()
     {
-        Application.Run(new Home());
-    }    
+
+        Application.Run(new ViewPessoa());
+    }
 }
