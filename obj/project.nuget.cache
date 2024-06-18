@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "96P4fgXDnVRjOlFJoUbH52XWhQ9T64pRfAHXXZtpwwiQqK6XALMSGqj2/w3TVHE/qyGyfBOGUoUudV9RxEUb/w==",
+  "dgSpecHash": "I/EubZb5mkMKzevoQMltdw/hDZa8UCc01aSGZkQNQfD9wr3v3EdrIOdR73dwQ7AKvqaCxxrVoyq58hLC6+QzMQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\allan.meciente\\Documents\\All\\PJP_WinForm_pessoa\\PJP_WinForm_pessoa.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\allan.meciente\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
-    "C:\\Users\\allan.meciente\\.nuget\\packages\\mysqlconnector\\2.3.7\\mysqlconnector.2.3.7.nupkg.sha512"
+    "C:\\Users\\allan.meciente\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512"
   ],
   "logs": []
 }
