@@ -9,6 +9,8 @@ namespace Model
         public int Idade { get; set; }
         public string Cpf { get; set; }
 
+        public Pessoa() { }
+
         public Pessoa(string nome, int idade, string cpf)
         {
             this.Nome = nome;
