@@ -5,6 +5,11 @@ namespace Controller
 {
     public class ControllerPessoa
     {
+
+        public static List<Pessoa> Sincronizar()
+        {
+            return Model.Sincronizar();
+        }
         public static void CriarPessoa(string nome, int idade, string cpf)
         {
             new Pessoa(nome, idade, cpf);

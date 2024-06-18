@@ -21,6 +21,10 @@ namespace Model
             RepoPessoa.pessoas.Add(this);
         }
 
+        public static List<Pessoa> Sinc()
+        {
+            return RepoPessoa.Sincronizar();
+        }
         public static List<Pessoa> ListarPessoa()
         {
             return RepoPessoa.pessoas;

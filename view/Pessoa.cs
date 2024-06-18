@@ -19,6 +19,8 @@ public class ViewPessoa : Form
 
     public ViewPessoa()
     {
+        Controller.Sincronizar();
+
         Size = new Size(500, 350);
         MinimumSize = new Size(500, 350);
         StartPosition = FormStartPosition.CenterScreen;
@@ -106,6 +108,7 @@ public class ViewPessoa : Form
 
         Controls.Add(dgvPessoas);
 
+        Listar();
 
     }
     private void ClickCreate(object? sender, EventArgs e)
@@ -141,6 +144,11 @@ public class ViewPessoa : Form
         {
             DataPropertyName = "Nome",
             HeaderText = "Nome"
+        });
+        dgvPessoas.Columns.Add(new DataGridViewTextBoxColumn
+        {
+            DataPropertyName = "Id",
+            HeaderText = "Id"
         });
         dgvPessoas.Columns.Add(new DataGridViewTextBoxColumn
         {
