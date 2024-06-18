@@ -58,3 +58,4 @@ obj/project.nuget.cache
 *.app
 
 # End of https://www.toptal.com/developers/gitignore/api/c++
+bin/Debug/net8.0-windows/PJP_WinForm_pessoa.deps.json
