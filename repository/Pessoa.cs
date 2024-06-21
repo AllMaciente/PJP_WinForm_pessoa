@@ -25,30 +25,24 @@ namespace Repo
         {
             conexao.Close();
         }
-        public static List<Pessoa> Sincronizar()
-        {
+         public static List<Pessoa> Sincronizar(){
             InitConexao();
             string query = "SELECT * FROM pessoas";
             MySqlCommand command = new MySqlCommand(query, conexao);
-            MySqlDataAdapter bdAdapter = new MySqlDataAdapter(command);
-
-            DataSet dbDataSet = new DataSet();
-            bdAdapter.Fill(dbDataSet, "pessoas");
-            DataTable table = dbDataSet.Tables["pessoas"];
-
-            foreach (DataRow row in table.Rows)
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
             {
+                // Aqui você pode acessar os dados retornados pela consulta SELECT
+                int id = Convert.ToInt32(reader["id"].ToString());
                 Pessoa pessoa = new Pessoa();
-                pessoa.Id = Convert.ToInt32(row["id"].ToString());
-                pessoa.Nome = row["nome"].ToString();
-                pessoa.Idade = Convert.ToInt32(row["idade"].ToString());
-                pessoa.Cpf = row["cpf"].ToString();
+                pessoa.Id = id;
+                pessoa.Idade = Convert.ToInt32(reader["idade"].ToString());
+                pessoa.Nome = reader["nome"].ToString();
+                pessoa.Cpf = reader["cpf"].ToString();
                 pessoas.Add(pessoa);
             }
-
             CloseConexao();
             return pessoas;
-
         }
     }
 }
