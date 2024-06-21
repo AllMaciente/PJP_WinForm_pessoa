@@ -1,15 +1,15 @@
-using Repo;
+using Repos;
 
 namespace Model
 {
     public class Pessoa
     {
         public int Id { get; set; }
-        public string Nome { get; set; }
+        public string Nome { get; set; } = string.Empty;
         public int Idade { get; set; }
-        public string Cpf { get; set; }
+        public string Cpf { get; set; } = string.Empty;
 
-        public Pessoa() { }
+        public Pessoa() {}
 
         public Pessoa(string nome, int idade, string cpf)
         {
@@ -17,13 +17,14 @@ namespace Model
             this.Idade = idade;
             this.Cpf = cpf;
 
-
             RepoPessoa.pessoas.Add(this);
         }
 
-         public static void Sincronizar() {
+        public static void Sincronizar()
+        {
             Repo.Sincronizar();
         }
+        
         public static List<Pessoa> ListarPessoa()
         {
             return RepoPessoa.pessoas;
