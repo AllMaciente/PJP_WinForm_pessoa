@@ -30,14 +30,9 @@ namespace Model
             return RepoPessoa.pessoas;
         }
 
-        public static void AlterarPessoa(int indice, string nome, int idade)
+        public static void AlterarPessoa(int indice, string nome, int idade, string cpf)
         {
-            Pessoa pessoa = RepoPessoa.pessoas[indice];
-
-            pessoa.Nome = nome;
-            pessoa.Idade = idade;
-
-            RepoPessoa.pessoas[indice] = pessoa;
+            RepoPessoa.alterar(indice, nome, idade, cpf);
         }
 
         public static void DeletarPessoa(int indice)

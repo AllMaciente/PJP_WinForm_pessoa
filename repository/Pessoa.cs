@@ -1,7 +1,8 @@
-using System.Data;
-using Model;
-using MySqlConnector;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using MySqlConnector;
+using Model;
 
 namespace Repo
 {
@@ -9,6 +10,7 @@ namespace Repo
     {
         public static List<Pessoa> pessoas = new List<Pessoa>();
         static private MySqlConnection conexao;
+
         public static void InitConexao()
         {
             string info = "server=localhost;database=projetointegrador;user id=root;password=''";
@@ -22,10 +24,12 @@ namespace Repo
                 MessageBox.Show("Impossível estabelecer conexão");
             }
         }
+
         public static void CloseConexao()
         {
             conexao.Close();
         }
+
         public static List<Pessoa> Sincronizar()
         {
             InitConexao();
@@ -47,61 +51,28 @@ namespace Repo
             return pessoas;
         }
 
-        public static void Add(Pessoa pessoa)
+        public static void alterar(int index, string nome, int idade, string cpf)
         {
-            InitConexao();
-            string insert = "INSERT INTO pessoas (nome, idade, cpf) VALUES (@nome, @idade, @cpf)";
-            MySqlCommand command = new MySqlCommand(insert, conexao);
-            try
+            Pessoa pessoaAtual = pessoas[index];
+
+            // Se os parâmetros forem vazios ou inválidos, use os valores atuais
+            if (string.IsNullOrEmpty(nome))
             {
-                if (pessoa.Nome == null || pessoa.Idade < 0 || pessoa.Cpf == null)
-                {
-                    MessageBox.Show("Nome não pode ser nulo");
-                }
-                else
-                {
-                    command.Parameters.AddWithValue("@nome", pessoa.Nome);
-                    command.Parameters.AddWithValue("@idade", pessoa.Idade);
-                    command.Parameters.AddWithValue("@cpf", pessoa.Cpf);
-
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    pessoa.Id = Convert.ToInt32(command.LastInsertedId);
-
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("Pessoa adicionada com sucesso");
-                        pessoas.Add(pessoa);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Impossível adicionar pessoa");
-                    }
-                }
+                nome = pessoaAtual.Nome;
             }
-            catch (Exception e)
+            if (string.IsNullOrEmpty(cpf))
             {
-                MessageBox.Show("Impossível estabelecer conexão com o banco: " + e.Message);
-            }
-            CloseConexao();
-        }
-
-        public static void Delete(int index)
-        {
-            InitConexao();
-            string delete = "DELETE FROM pessoas where id = @id";
-            MySqlCommand command = new MySqlCommand(delete, conexao);
-            command.Parameters.AddWithValue("@id", pessoas[index].Id);
-
-            int rowsAffected = command.ExecuteNonQuery();
-
-            if (rowsAffected > 0)
-            {
-                pessoas.RemoveAt(index);
-                MessageBox.Show("Pessoa deletada com sucesso");
+                cpf = pessoaAtual.Cpf;
             }
 
-            CloseConexao();
+            // Adicione lógica para alterar a idade, caso necessário
+
+            // Atualize a pessoa na lista
+            pessoaAtual.Nome = nome;
+            pessoaAtual.Idade = idade;
+            pessoaAtual.Cpf = cpf;
+
+            // Aqui você também pode adicionar a lógica para atualizar o banco de dados, se necessário
         }
     }
 }

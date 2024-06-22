@@ -6,7 +6,8 @@ namespace Controller
     public class ControllerPessoa
     {
 
-         public static void Sincronizar(){
+        public static void Sincronizar()
+        {
             Pessoa.Sincronizar();
         }
         public static void CriarPessoa(string nome, int idade, string cpf)
@@ -19,12 +20,12 @@ namespace Controller
             return Pessoa.ListarPessoa();
         }
 
-        public static void AlterarPessoa(int indice, string nome, int idade)
+        public static void AlterarPessoa(int indice, string nome, int idade, string cpf)
         {
             List<Pessoa> pessoas = ListarPessoa();
             if (indice >= 0 && indice < pessoas.Count)
             {
-                Pessoa.AlterarPessoa(indice, nome, idade);
+                Pessoa.AlterarPessoa(indice, nome, idade, cpf);
                 Console.WriteLine("Pessoa Alterada com sucesso;");
             }
             else
