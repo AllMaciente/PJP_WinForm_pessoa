@@ -19,7 +19,7 @@ public class ViewPessoa : Form
 
     public ViewPessoa()
     {
-        Controller.Sincronizar();
+        ControllerPessoa.Sincronizar();
 
         Size = new Size(500, 350);
         MinimumSize = new Size(500, 350);
@@ -85,6 +85,7 @@ public class ViewPessoa : Form
             Location = new Point(275, 120),
             Size = new Size(100, 20)
         };
+        btnDelete.Click += ClickDeletar;
 
         dgvPessoas = new DataGridView
         {
@@ -131,6 +132,13 @@ public class ViewPessoa : Form
 
 
         ControllerPessoa.CriarPessoa(inpNome.Text, Convert.ToInt32(inpIdade.Text), inpCpf.Text);
+        Listar();
+    }
+
+    private void ClickDeletar(object? sender, EventArgs e)
+    {
+        int index = dgvPessoas.SelectedRows[0].Index;
+        ControllerPessoa.DeletarPessoa(index);
         Listar();
     }
     private void Listar()

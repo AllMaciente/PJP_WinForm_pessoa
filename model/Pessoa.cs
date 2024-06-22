@@ -1,4 +1,4 @@
-using Repos;
+using Repo;
 
 namespace Model
 {
@@ -9,7 +9,7 @@ namespace Model
         public int Idade { get; set; }
         public string Cpf { get; set; } = string.Empty;
 
-        public Pessoa() {}
+        public Pessoa() { }
 
         public Pessoa(string nome, int idade, string cpf)
         {
@@ -17,14 +17,14 @@ namespace Model
             this.Idade = idade;
             this.Cpf = cpf;
 
-            RepoPessoa.pessoas.Add(this);
+            RepoPessoa.Add(this);
         }
 
         public static void Sincronizar()
         {
-            Repo.Sincronizar();
+            RepoPessoa.Sincronizar();
         }
-        
+
         public static List<Pessoa> ListarPessoa()
         {
             return RepoPessoa.pessoas;
@@ -42,7 +42,7 @@ namespace Model
 
         public static void DeletarPessoa(int indice)
         {
-            RepoPessoa.pessoas.RemoveAt(indice);
+            RepoPessoa.Delete(indice);
         }
 
         public void Falar()
