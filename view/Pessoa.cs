@@ -136,28 +136,28 @@ public class ViewPessoa : Form
         Listar();
     }
     private void ClickAlterar(object sender, EventArgs e)
-    {
-        int indice = 0; // Obtém o índice apropriado para o item a ser alterado
-        string nome = inpNome.Text;
-        // string idadeStr = Idade.Text;
-        string cpf = inpCpf.Text;
-
-        // Chama o método AlterarPessoa com as entradas do formulário
-        RepoPessoa.AlterarPessoa(indice, nome, Convert.ToInt32(inpIdade.Text), cpf);
-    }
-    // private void ClickAlterar(object? sender, EventArgs e)
     // {
-    //     int index = dgvPessoas.SelectedRows[0].Index;
-    //     ControllerPessoa.AlterarPessoa(index, inpNome.Text, Convert.ToInt32(inpIdade.Text), inpCpf.Text);
-    //     Listar();
+    //     int indice = 0; // Obtém o índice apropriado para o item a ser alterado
+    //     string nome = inpNome.Text;
+    //     // string idadeStr = Idade.Text;
+    //     string cpf = inpCpf.Text;
+
+    //     // Chama o método AlterarPessoa com as entradas do formulário
+    //     ControllerPessoa.AlterarPessoa(indice, nome, Convert.ToInt32(inpIdade.Text), cpf);
     // }
+    // private void ClickAlterar(object? sender, EventArgs e)
+    {
+        int index = dgvPessoas.SelectedRows[0].Index;
+        ControllerPessoa.AlterarPessoa(index, inpNome.Text, Convert.ToInt32(inpIdade.Text), inpCpf.Text);
+        Listar();
+    }
     private void ClickDeletar(object? sender, EventArgs e)
     {
         int index = dgvPessoas.SelectedRows[0].Index;
         ControllerPessoa.DeletarPessoa(index);
         Listar();
     }
-    s private void Listar()
+    private void Listar()
     {
         List<Pessoa> pessoas = ControllerPessoa.ListarPessoa();
         dgvPessoas.Columns.Clear();

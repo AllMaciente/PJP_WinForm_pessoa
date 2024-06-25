@@ -32,7 +32,7 @@ namespace Model
 
         public static void AlterarPessoa(int indice, string nome, int idade, string cpf)
         {
-            RepoPessoa.alterar(indice, nome, idade, cpf);
+            RepoPessoa.AlterarPessoa(indice, nome, idade, cpf);
         }
 
         public static void DeletarPessoa(int indice)

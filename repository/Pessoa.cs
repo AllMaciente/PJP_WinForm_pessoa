@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using MySqlConnector;
+using System.Windows.Forms;
 using Model;
 
 namespace Repo
@@ -13,7 +13,8 @@ namespace Repo
 
         public static void InitConexao()
         {
-            string info = "server=localhost;database=projetointegrador;user id=root;password=''";
+            //string info = "server=localhost;database=projetointegrador;user id=root;password=''";
+            string info ="server=viaduct.proxy.rlwy.net;port=47021;database=railway;uid=root;password=RlmHuRQgcfMZjdGenKYTqseXdHpAjjjZ;";
             conexao = new MySqlConnection(info);
             try
             {
@@ -38,7 +39,6 @@ namespace Repo
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                // Aqui você pode acessar os dados retornados pela consulta SELECT
                 int id = Convert.ToInt32(reader["id"].ToString());
                 Pessoa pessoa = new Pessoa();
                 pessoa.Id = id;
@@ -51,11 +51,15 @@ namespace Repo
             return pessoas;
         }
 
-        public static void alterar(int index, string nome, int idade, string cpf)
+        public static void Add(Pessoa pessoa)
+        {
+            pessoas.Add(pessoa);
+        }
+
+        public static void AlterarPessoa(int index, string nome, int idade, string cpf)
         {
             Pessoa pessoaAtual = pessoas[index];
 
-            // Se os parâmetros forem vazios ou inválidos, use os valores atuais
             if (string.IsNullOrEmpty(nome))
             {
                 nome = pessoaAtual.Nome;
@@ -65,14 +69,14 @@ namespace Repo
                 cpf = pessoaAtual.Cpf;
             }
 
-            // Adicione lógica para alterar a idade, caso necessário
-
-            // Atualize a pessoa na lista
             pessoaAtual.Nome = nome;
             pessoaAtual.Idade = idade;
             pessoaAtual.Cpf = cpf;
+        }
 
-            // Aqui você também pode adicionar a lógica para atualizar o banco de dados, se necessário
+        public static void Delete(int index)
+        {
+            pessoas.RemoveAt(index);
         }
     }
 }
